@@ -38,7 +38,8 @@ requirements:
     - pip
     - libboost-devel
     - libcurand-dev  # [(cuda_compiler_version or "").startswith("12")]
-
+  run:
+    - python
 test:
   commands:
     # Dry run to verify dynamic libs are present.
