@@ -40,6 +40,13 @@ requirements:
     - libcurand-dev  # [(cuda_compiler_version or "").startswith("12")]
   run:
     - python
+    - MDAnalysis
+    - networkx
+    - numpy
+    - pandas
+    - pathos
+    - rdkit
+
 test:
   commands:
     # Dry run to verify dynamic libs are present.
