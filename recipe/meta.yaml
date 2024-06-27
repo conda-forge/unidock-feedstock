@@ -23,7 +23,7 @@ build:
     cd unidock_tools
     {{ PYTHON }} -m pip install . -vv
   string: cuda{{ cuda_compiler_version | replace('.', '') }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -35,7 +35,6 @@ requirements:
     - libgomp
   host:
     - pip
-    - python
     - libboost-devel
     - libcurand-dev  # [(cuda_compiler_version or "").startswith("12")]
 
