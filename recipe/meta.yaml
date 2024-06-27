@@ -14,14 +14,15 @@ build:
   skip: true  # [cuda_compiler_version == "None"]
   skip: true  # [cuda_compiler_version == "11.2"]
   script: |
+    cd unidock_tools
+    pip install . -vv
+    cd ..
     cd unidock
-    mkdir conda_build && cd conda_build
+    mkdir conda_build
+    cd conda_build
     cmake ${CMAKE_ARGS} ${SRC_DIR}/unidock
     make unidock -j$CPU_COUNT
     make install
-    cd ..
-    cd unidock_tools
-    pip install . -vv
   string: cuda{{ cuda_compiler_version | replace('.', '') }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
   number: 1
 
