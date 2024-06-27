@@ -19,6 +19,9 @@ build:
     cmake ${CMAKE_ARGS} ${SRC_DIR}/unidock
     make unidock -j$CPU_COUNT
     make install
+    cd ..
+    cd unidock_tools
+    {{ PYTHON }} -m pip install . -vv
   string: cuda{{ cuda_compiler_version | replace('.', '') }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
   number: 0
 
@@ -31,6 +34,8 @@ requirements:
     - make
     - libgomp
   host:
+    - pip
+    - python
     - libboost-devel
     - libcurand-dev  # [(cuda_compiler_version or "").startswith("12")]
 
@@ -38,6 +43,7 @@ test:
   commands:
     # Dry run to verify dynamic libs are present.
     - unidock --version
+    - unidocktools --help
 
 about:
   home: https://github.com/dptech-corp/Uni-Dock
