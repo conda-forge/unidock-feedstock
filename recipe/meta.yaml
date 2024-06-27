@@ -21,7 +21,7 @@ build:
     make install
     cd ..
     cd unidock_tools
-    {{ PYTHON }} -m pip install . -vv
+    pip install . -vv
   string: cuda{{ cuda_compiler_version | replace('.', '') }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
   number: 1
 
