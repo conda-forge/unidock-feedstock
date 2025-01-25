@@ -46,6 +46,7 @@ requirements:
     - MDAnalysis
     - networkx
     - numpy
+    - openmm
     - pandas
     - pathos
     - rdkit
