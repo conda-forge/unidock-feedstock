@@ -1,0 +1,25 @@
+From 79d57e1d4f018e307a4a82e9c94090cd0095d1cf Mon Sep 17 00:00:00 2001
+From: Chun Cai <amoycaic@gmail.com>
+Date: Sat, 25 Jan 2025 16:51:27 +0800
+Subject: [PATCH] fix: correct usage of boost::filesystem::path::extension
+
+---
+ unidock/src/main/simulation_container.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/unidock/src/main/simulation_container.h b/unidock/src/main/simulation_container.h
+index b4ddb39..4be19cf 100644
+--- a/unidock/src/main/simulation_container.h
++++ b/unidock/src/main/simulation_container.h
+@@ -327,7 +327,7 @@ struct simulation_container {
+             complex_property& cp
+                 = m_ptr_complex_property_holder->m_properties[m_successful_property_count];
+ 
+-            if (boost::filesystem::extension(m_ligand_config_paths[id].path().string())
++            if (boost::filesystem::path::extension(m_ligand_config_paths[id].path().string())
+                 == ".json") {
+                 try {
+                     success_filled = fill_config_from_json(
+-- 
+2.39.5 (Apple Git-154)
+

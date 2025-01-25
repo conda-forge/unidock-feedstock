@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/dptech-corp/Uni-Dock/archive/refs/tags/{{ version }}.tar.gz
   sha256: 0799f7673ac7d4151ced6a1f7bf670b8d3e78032192f304b6750527c1b0016e5
+  patches:
+    - 0001-fix-boost-path.patch
 
 build:
   skip: true  # [not linux]
