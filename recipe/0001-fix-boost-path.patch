@@ -1,24 +1,25 @@
-From 7eb2c3724ee1b5341433a8f157992d2fec3108c4 Mon Sep 17 00:00:00 2001
+From f1b722c4e57990388220709851bee623acf1910c Mon Sep 17 00:00:00 2001
 From: Chun Cai <amoycaic@gmail.com>
-Date: Sat, 25 Jan 2025 17:26:32 +0800
+Date: Sat, 25 Jan 2025 17:52:53 +0800
 Subject: [PATCH] fix: correct usage of boost::filesystem::path::extension
 
 ---
- unidock/src/main/simulation_container.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ unidock/src/main/simulation_container.h | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/unidock/src/main/simulation_container.h b/unidock/src/main/simulation_container.h
-index b4ddb39..aff7820 100644
+index b4ddb39..f28b284 100644
 --- a/unidock/src/main/simulation_container.h
 +++ b/unidock/src/main/simulation_container.h
-@@ -327,7 +327,7 @@ struct simulation_container {
+@@ -327,8 +327,7 @@ struct simulation_container {
              complex_property& cp
                  = m_ptr_complex_property_holder->m_properties[m_successful_property_count];
 
 -            if (boost::filesystem::extension(m_ligand_config_paths[id].path().string())
-+            if (boost::filesystem::path::extension(m_ligand_config_paths[id].path())
-                 == ".json") {
+-                == ".json") {
++            if (m_ligand_config_paths[id].path().extension().string() == ".json") {
                  try {
                      success_filled = fill_config_from_json(
+                         cp, m_ligand_config_paths[id].path().string(),
 --
 2.39.5 (Apple Git-154)
